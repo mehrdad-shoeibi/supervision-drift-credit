@@ -141,6 +141,11 @@ def main() -> None:
         )
         log.log(f"    syn_train n={len(syn_train):,} syn_test n={len(syn_test):,}")
 
+        # Drop the real-label helper column so it can never leak into features
+        # (defense-in-depth; identify_features also excludes "_"-prefixed cols).
+        syn_train = syn_train.drop(columns=["_default_real"], errors="ignore")
+        syn_test = syn_test.drop(columns=["_default_real"], errors="ignore")
+
         y_test = syn_test[u.TARGET_COL].astype(int).values
 
         for model_name, seeds in u.model_specs():

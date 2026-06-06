@@ -245,6 +245,10 @@ def identify_features(
     for col in df.columns:
         if col in excl:
             continue
+        # Any underscore-prefixed column is internal/derived (e.g. _issue_year,
+        # _default_real, _y_syn) and is NEVER a predictive feature.
+        if str(col).startswith("_"):
+            continue
         if pd.api.types.is_numeric_dtype(df[col]):
             numeric.append(col)
         else:
