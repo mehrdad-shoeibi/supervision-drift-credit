@@ -1,0 +1,38 @@
+{
+  "stage": "03_primary_experiment",
+  "timestamp_utc": "2026-06-07T00:43:35.055525+00:00",
+  "command": "src/03_primary_experiment.py --bootstrap 2000",
+  "git_commit": "2e292c47ceb50ae5e2933056cf32280c8f90600c",
+  "package_versions": {
+    "python": "3.13.12",
+    "numpy": "2.4.4",
+    "pandas": "3.0.2",
+    "sklearn": "1.9.0",
+    "scipy": "1.17.1",
+    "pyarrow": "24.0.0"
+  },
+  "input_file_hashes": {
+    "/home/mehrdad/Desktop/supervision-drift-credit/data/processed/vintage_2013.parquet": {
+      "sha256": "1425fe8cb7e48d048bc11874647ecd9169fbf6053777d7dbe4f853051c515446",
+      "bytes": 1269935
+    },
+    "/home/mehrdad/Desktop/supervision-drift-credit/data/processed/vintage_2016.parquet": {
+      "sha256": "aadaaaf3997c0dc0d95a065a6154cc14e7be433640789689c0050d5b3554aac6",
+      "bytes": 2768970
+    },
+    "/home/mehrdad/Desktop/supervision-drift-credit/data/processed/indomain_2013_train.parquet": {
+      "sha256": "3220f7df509fc8e17e77c50306b109a402126aed32a3caac48245b3799f21a13",
+      "bytes": 1065033
+    },
+    "/home/mehrdad/Desktop/supervision-drift-credit/data/processed/indomain_2013_test.parquet": {
+      "sha256": "7de0814cf24bb082e9e44b59cf3dc674176bd79e90b06d8b39f21e1846f89088",
+      "bytes": 286338
+    }
+  },
+  "extra": {
+    "bootstrap": 2000,
+    "source_segment": "debt_consolidation",
+    "target_segment": "credit_card",
+    "n_result_rows": 15
+  }
+}

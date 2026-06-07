@@ -1,0 +1,39 @@
+======================================================================
+Stage 3 — Primary experiment
+======================================================================
+bootstrap resamples: 2000
+NOTE: bootstrap CIs at this setting may be computationally expensive across all model/seed/context combinations.
+
+Context A — in-domain (2013 train -> 2013 test):
+  [in_domain] features: 5 numeric, 5 categorical
+  [in_domain] train n=107,843 (default rate 0.1560); test n=26,961 (default rate 0.1560)
+    logreg seed=0: AUROC=0.6365 [0.6275,0.6453] AP=0.2326 Brier=0.1278
+    hgb seed=0: AUROC=0.6524 [0.6438,0.6611] AP=0.2406 Brier=0.1268
+    rf seed=0: AUROC=0.6118 [0.6025,0.6205] AP=0.2098 Brier=0.1304
+    rf seed=1: AUROC=0.6109 [0.6014,0.6198] AP=0.2082 Brier=0.1305
+    rf seed=2: AUROC=0.6137 [0.6046,0.6224] AP=0.2099 Brier=0.1303
+
+Context B — temporal (vintage 2013 -> vintage 2016):
+  [temporal] features: 5 numeric, 5 categorical
+  [temporal] train n=134,804 (default rate 0.1560); test n=293,057 (default rate 0.2328)
+    logreg seed=0: AUROC=0.6534 [0.6511,0.6556] AP=0.3499 Brier=0.1747
+    hgb seed=0: AUROC=0.6592 [0.6569,0.6615] AP=0.3552 Brier=0.1751
+    rf seed=0: AUROC=0.6222 [0.6200,0.6246] AP=0.3158 Brier=0.1798
+    rf seed=1: AUROC=0.6225 [0.6202,0.6248] AP=0.3155 Brier=0.1797
+    rf seed=2: AUROC=0.6219 [0.6197,0.6242] AP=0.3157 Brier=0.1798
+
+Context C — cross-segment (largest 2013 purpose -> second-largest):
+  source segment: debt_consolidation (n=80634)
+  target segment: credit_card (n=32804)
+  [cross_segment] features: 5 numeric, 4 categorical
+  [cross_segment] train n=80,634 (default rate 0.1636); test n=32,804 (default rate 0.1320)
+    logreg seed=0: AUROC=0.6408 [0.6322,0.6494] AP=0.2036 Brier=0.1123
+    hgb seed=0: AUROC=0.6530 [0.6448,0.6613] AP=0.2104 Brier=0.1115
+    rf seed=0: AUROC=0.6132 [0.6043,0.6225] AP=0.1828 Brier=0.1145
+    rf seed=1: AUROC=0.6135 [0.6046,0.6221] AP=0.1828 Brier=0.1145
+    rf seed=2: AUROC=0.6132 [0.6044,0.6223] AP=0.1832 Brier=0.1145
+
+wrote: results/tables/primary_experiment_results.csv / .json
+wrote: results/manifests/03_primary_experiment_manifest.json
+
+Stage 3 complete.
