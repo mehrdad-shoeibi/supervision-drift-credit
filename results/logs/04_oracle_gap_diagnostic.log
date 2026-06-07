@@ -1,0 +1,26 @@
+======================================================================
+Stage 4 — Oracle-gap diagnostic
+======================================================================
+
+Temporal oracle gap (source=all 2013, oracle=2016 train, test=2016 held-out):
+  target_test_2016 n=58,612
+    logreg seed=0: AUROC src=0.6552 orc=0.6636 gap=+0.0083 | Brier gap=+0.0065
+    hgb seed=0: AUROC src=0.6621 orc=0.6726 gap=+0.0104 | Brier gap=+0.0082
+    rf seed=0: AUROC src=0.6269 orc=0.6433 gap=+0.0164 | Brier gap=+0.0079
+    rf seed=1: AUROC src=0.6254 orc=0.6407 gap=+0.0152 | Brier gap=+0.0077
+    rf seed=2: AUROC src=0.6262 orc=0.6425 gap=+0.0163 | Brier gap=+0.0078
+
+Cross-segment oracle gap (source=all source seg, oracle=target seg train, test=target seg held-out):
+  source segment: debt_consolidation (n=80634)
+  target segment: credit_card (n=32804)
+  target_segment_test n=6,561
+    logreg seed=0: AUROC src=0.6156 orc=0.6083 gap=-0.0073 | Brier gap=+0.0000
+    hgb seed=0: AUROC src=0.6359 orc=0.6420 gap=+0.0061 | Brier gap=+0.0009
+    rf seed=0: AUROC src=0.5998 orc=0.5967 gap=-0.0031 | Brier gap=+0.0001
+    rf seed=1: AUROC src=0.5991 orc=0.5939 gap=-0.0052 | Brier gap=+0.0002
+    rf seed=2: AUROC src=0.5980 orc=0.5983 gap=+0.0004 | Brier gap=+0.0002
+
+wrote: results/tables/oracle_gap_summary.csv / .json
+wrote: results/manifests/04_oracle_gap_manifest.json
+
+Stage 4 complete.

@@ -1,0 +1,29 @@
+{
+  "stage": "04_oracle_gap_diagnostic",
+  "timestamp_utc": "2026-06-07T03:24:35.055103+00:00",
+  "command": "src/04_oracle_gap_diagnostic.py",
+  "git_commit": "81218b384f75d31910eeaf17633ce6207582fac3",
+  "package_versions": {
+    "python": "3.13.12",
+    "numpy": "2.4.4",
+    "pandas": "3.0.2",
+    "sklearn": "1.9.0",
+    "scipy": "1.17.1",
+    "pyarrow": "24.0.0"
+  },
+  "input_file_hashes": {
+    "/home/mehrdad/Desktop/supervision-drift-credit/data/processed/vintage_2013.parquet": {
+      "sha256": "1425fe8cb7e48d048bc11874647ecd9169fbf6053777d7dbe4f853051c515446",
+      "bytes": 1269935
+    },
+    "/home/mehrdad/Desktop/supervision-drift-credit/data/processed/vintage_2016.parquet": {
+      "sha256": "aadaaaf3997c0dc0d95a065a6154cc14e7be433640789689c0050d5b3554aac6",
+      "bytes": 2768970
+    }
+  },
+  "extra": {
+    "source_segment": "debt_consolidation",
+    "target_segment": "credit_card",
+    "n_result_rows": 10
+  }
+}
