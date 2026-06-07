@@ -17,3 +17,6 @@ __pycache__/
 .DS_Store
 data/
 data
+
+# Claude workspace artifacts
+.claude/
