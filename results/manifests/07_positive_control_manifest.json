@@ -1,0 +1,35 @@
+{
+  "stage": "07_positive_control_synthetic_drift",
+  "timestamp_utc": "2026-06-07T09:33:19.628089+00:00",
+  "command": "src/07_positive_control_synthetic_drift.py",
+  "git_commit": "fa9f3f0d2ad9ff1893fd2962c35a3b7003314923",
+  "package_versions": {
+    "python": "3.13.12",
+    "numpy": "2.4.4",
+    "pandas": "3.0.2",
+    "sklearn": "1.9.0",
+    "scipy": "1.17.1",
+    "pyarrow": "24.0.0"
+  },
+  "input_file_hashes": {
+    "/home/mehrdad/Desktop/supervision-drift-credit/data/processed/vintage_2013.parquet": {
+      "sha256": "1425fe8cb7e48d048bc11874647ecd9169fbf6053777d7dbe4f853051c515446",
+      "bytes": 1269935
+    },
+    "/home/mehrdad/Desktop/supervision-drift-credit/data/processed/vintage_2016.parquet": {
+      "sha256": "aadaaaf3997c0dc0d95a065a6154cc14e7be433640789689c0050d5b3554aac6",
+      "bytes": 2768970
+    }
+  },
+  "extra": {
+    "levels": {
+      "weak": 0.05,
+      "medium": 0.15,
+      "strong": 0.3
+    },
+    "perturbation_features": [
+      "dti_n",
+      "fico_n"
+    ]
+  }
+}

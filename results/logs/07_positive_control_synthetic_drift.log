@@ -1,0 +1,36 @@
+======================================================================
+Stage 7 — Synthetic positive-control sensitivity curve
+======================================================================
+perturbation features used: ['dti_n', 'fico_n']
+
+--- level=weak (overwrite fraction 0.05) ---
+    base_rate real=0.2328 syn=0.2325 overwrite_frac=0.05 actual_flipped=0.0155
+    syn_train n=234,445 syn_test n=58,612
+    logreg seed=0: AUROC src=0.6629 orc=0.6734 gap=+0.0105
+    hgb seed=0: AUROC src=0.6669 orc=0.6816 gap=+0.0147
+    rf seed=0: AUROC src=0.6317 orc=0.6565 gap=+0.0248
+    rf seed=1: AUROC src=0.6322 orc=0.6545 gap=+0.0223
+    rf seed=2: AUROC src=0.6315 orc=0.6562 gap=+0.0248
+
+--- level=medium (overwrite fraction 0.15) ---
+    base_rate real=0.2328 syn=0.2324 overwrite_frac=0.15 actual_flipped=0.0465
+    syn_train n=234,445 syn_test n=58,612
+    logreg seed=0: AUROC src=0.6743 orc=0.6931 gap=+0.0188
+    hgb seed=0: AUROC src=0.6771 orc=0.7062 gap=+0.0291
+    rf seed=0: AUROC src=0.6395 orc=0.6815 gap=+0.0420
+    rf seed=1: AUROC src=0.6418 orc=0.6814 gap=+0.0396
+    rf seed=2: AUROC src=0.6402 orc=0.6817 gap=+0.0415
+
+--- level=strong (overwrite fraction 0.3) ---
+    base_rate real=0.2328 syn=0.2327 overwrite_frac=0.30 actual_flipped=0.0923
+    syn_train n=234,445 syn_test n=58,612
+    logreg seed=0: AUROC src=0.7052 orc=0.7472 gap=+0.0420
+    hgb seed=0: AUROC src=0.7051 orc=0.7630 gap=+0.0579
+    rf seed=0: AUROC src=0.6635 orc=0.7446 gap=+0.0810
+    rf seed=1: AUROC src=0.6653 orc=0.7442 gap=+0.0790
+    rf seed=2: AUROC src=0.6644 orc=0.7448 gap=+0.0803
+
+wrote: positive_control_summary.csv / feature_stability.csv / summary.json
+wrote: results/manifests/07_positive_control_manifest.json
+
+Stage 7 complete.
