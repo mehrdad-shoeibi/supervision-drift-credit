@@ -1,0 +1,26 @@
+======================================================================
+Stage 6 — Feature-label stability diagnostic
+======================================================================
+
+[1] temporal: vintage_2013 vs vintage_2016
+  [temporal] numeric features assessed: 5
+  [temporal] categorical features assessed: 5
+
+[2] cross_segment: largest vs second-largest 2013 purpose
+  source segment: debt_consolidation (n=80634)
+  target segment: credit_card (n=32804)
+  [cross_segment] numeric features assessed: 5
+  [cross_segment] categorical features assessed: 4
+
+[3] temporal_noise_baseline: vintage_2013 random halves
+  [temporal_noise_baseline] numeric features assessed: 5
+  [temporal_noise_baseline] categorical features assessed: 5
+
+[4] cross_segment_noise_baseline: largest 2013 purpose random halves
+  [cross_segment_noise_baseline] numeric features assessed: 5
+  [cross_segment_noise_baseline] categorical features assessed: 4
+
+wrote: feature_label_stability_numeric.csv / categorical_categories.csv / categorical_summary.csv / summary.json
+wrote: results/manifests/06_feature_label_stability_manifest.json
+
+Stage 6 complete.

@@ -1,0 +1,36 @@
+{
+  "by_comparison": {
+    "temporal": {
+      "numeric_mean_delta_abs_spearman": 0.021322374630082234,
+      "numeric_mean_delta_abs_auc_strength": 0.006986861901174435,
+      "numeric_max_delta_abs_auc_strength": 0.015315637910814806,
+      "categorical_mean_weighted_risk_diff_change": 0.015944361929449744,
+      "categorical_max_risk_diff_change": 0.923141574852226
+    },
+    "cross_segment": {
+      "numeric_mean_delta_abs_spearman": 0.004993612692027154,
+      "numeric_mean_delta_abs_auc_strength": 0.006296993585905897,
+      "numeric_max_delta_abs_auc_strength": 0.01745746307027618,
+      "categorical_mean_weighted_risk_diff_change": 0.015430950729109423,
+      "categorical_max_risk_diff_change": 1.0316750339161462
+    },
+    "temporal_noise_baseline": {
+      "numeric_mean_delta_abs_spearman": 0.0044139169569400415,
+      "numeric_mean_delta_abs_auc_strength": 0.00280652427325776,
+      "numeric_max_delta_abs_auc_strength": 0.005401117888054974,
+      "categorical_mean_weighted_risk_diff_change": 0.011116292090267533,
+      "categorical_max_risk_diff_change": 1.0
+    },
+    "cross_segment_noise_baseline": {
+      "numeric_mean_delta_abs_spearman": 0.005760795167065463,
+      "numeric_mean_delta_abs_auc_strength": 0.003594508458131096,
+      "numeric_max_delta_abs_auc_strength": 0.00859689383531681,
+      "categorical_mean_weighted_risk_diff_change": 0.01798922319693016,
+      "categorical_max_risk_diff_change": 1.0000248034327952
+    }
+  },
+  "cross_segment": {
+    "source": "debt_consolidation",
+    "target": "credit_card"
+  }
+}
