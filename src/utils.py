@@ -280,8 +280,16 @@ def stratified_split(df: pd.DataFrame, *, test_size: float = 0.2, random_state: 
 # ----------------------------------------------------------------------------
 # Preprocessing + models
 # ----------------------------------------------------------------------------
-def build_preprocessor(numeric: list[str], categorical: list[str], *, scale: bool):
-    """ColumnTransformer; fit on training data only by the caller."""
+def build_preprocessor(numeric: list[str], categorical: list[str], *, scale: bool,
+                       dense_output: bool = False):
+    """ColumnTransformer; fit on training data only by the caller.
+
+    When ``dense_output`` is True the transformed matrix is forced dense, which
+    is required by estimators (e.g. HistGradientBoosting) that reject scipy
+    sparse input. This changes ONLY the storage format: the one-hot encoding
+    semantics (including handle_unknown="ignore") and the encoded values are
+    identical to the sparse path.
+    """
     from sklearn.compose import ColumnTransformer
     from sklearn.impute import SimpleImputer
     from sklearn.pipeline import Pipeline
@@ -294,7 +302,7 @@ def build_preprocessor(numeric: list[str], categorical: list[str], *, scale: boo
 
     cat_pipe = Pipeline([
         ("impute", SimpleImputer(strategy="most_frequent")),
-        ("onehot", OneHotEncoder(handle_unknown="ignore")),
+        ("onehot", OneHotEncoder(handle_unknown="ignore", sparse_output=not dense_output)),
     ])
 
     transformers = []
@@ -302,7 +310,10 @@ def build_preprocessor(numeric: list[str], categorical: list[str], *, scale: boo
         transformers.append(("num", num_pipe, numeric))
     if categorical:
         transformers.append(("cat", cat_pipe, categorical))
-    return ColumnTransformer(transformers, remainder="drop", sparse_threshold=0.3)
+    # sparse_threshold=0 forces a dense hstack when dense output is requested;
+    # otherwise preserve the existing sparse-friendly behaviour.
+    sparse_threshold = 0.0 if dense_output else 0.3
+    return ColumnTransformer(transformers, remainder="drop", sparse_threshold=sparse_threshold)
 
 
 def build_model(name: str, *, seed: int):
@@ -324,12 +335,27 @@ def model_specs() -> list[tuple[str, list[int]]]:
     return [("logreg", [0]), ("hgb", [0]), ("rf", [0, 1, 2])]
 
 
+# Estimators that cannot consume scipy sparse matrices need a dense feature
+# matrix. The requirement is keyed by model name so it travels with the model
+# and applies uniformly across every stage that calls build_pipeline.
+#   logreg -> False (accepts sparse)
+#   rf     -> False (accepts sparse)
+#   hgb    -> True  (HistGradientBoosting rejects sparse input)
+_DENSE_REQUIRED_MODELS = {"hgb"}
+
+
+def model_requires_dense(name: str) -> bool:
+    """Whether estimator `name` requires a dense (non-sparse) feature matrix."""
+    return name in _DENSE_REQUIRED_MODELS
+
+
 def build_pipeline(model_name: str, numeric: list[str], categorical: list[str], *, seed: int):
     """Full sklearn Pipeline: preprocessing + classifier. Fit on train only."""
     from sklearn.pipeline import Pipeline
 
     scale = model_name == "logreg"
-    pre = build_preprocessor(numeric, categorical, scale=scale)
+    dense_output = model_requires_dense(model_name)
+    pre = build_preprocessor(numeric, categorical, scale=scale, dense_output=dense_output)
     clf = build_model(model_name, seed=seed)
     return Pipeline([("pre", pre), ("clf", clf)])
 
