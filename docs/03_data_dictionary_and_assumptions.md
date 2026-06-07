@@ -115,11 +115,15 @@ Stage 7 positive control. They are locked before execution.
 - **AUROC stable:** the drop in test AUROC from the in-domain reference to a
   transfer context is `< 0.02` (absolute). A drop `>= 0.05` is "degraded";
   `[0.02, 0.05)` is "borderline".
-- **Oracle gap small:** `oracle_gap_auroc < 0.02`. "Large" if `>= 0.05`.
+- **Oracle gap small:** `oracle_gap_auroc < 0.02`. "Large" if `>= 0.05`. The
+  intermediate band `[0.02, 0.05)` (i.e. `>= 0.02` and `< 0.05`) is
+  **"moderate / borderline"**.
 - **Feature–label instability low:** the transfer-context stability deltas
   (e.g. mean `delta_abs_auc_strength`, weighted mean `delta_abs_risk_difference`)
   do not exceed the corresponding **noise-baseline** deltas by more than a factor
-  of 2. "High" if they exceed the noise baseline by `>= 3x`.
+  of 2. "High" if they exceed the noise baseline by `>= 3x`. The intermediate
+  band — **more than 2× but less than 3×** the noise baseline (i.e. `> 2x` and
+  `< 3x`) — is **"moderate / borderline"**.
 - **Calibration poor:** ECE (10-bin) `> 0.05`, or |calibration intercept| `> 0.5`,
   or calibration slope outside `[0.8, 1.25]`.
 - **Recalibration fixes most of it:** intercept/base-rate recalibration reduces
@@ -132,6 +136,19 @@ Stage 7 positive control. They are locked before execution.
 
 These thresholds are diagnostic anchors for transparent reporting; the
 multi-signal decision rules in doc 02 govern the final interpretation.
+
+**Reporting of moderate / borderline bands.** A "moderate / borderline" oracle
+gap or feature–label instability value is intermediate diagnostic evidence. It
+is not, on its own, evidence of strong drift, and it is equally not null
+evidence. Such a value is reported transparently as intermediate rather than
+forced into the small/large or low/high categories. Where a middle-band result
+does not trigger one of the hard decision rules in `docs/02_decision_rules.md`,
+it is reported as intermediate diagnostic evidence. Final interpretation weighs
+the full pre-specified diagnostic pattern together — primary performance, oracle
+gap, calibration, base-rate shift, feature–label stability, and positive-control
+sensitivity — preserving scientific caution without collapsing to a rigid binary
+reading. This is a reporting clarification only; it does not add, remove, or
+alter any decision rule or numeric threshold.
 
 ---
 

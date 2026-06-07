@@ -66,3 +66,11 @@ claim.
   analyses, if any, do not trigger these rules.
 - Where multiple rules could apply, all applicable conclusions are reported; the
   rules are diagnostic descriptors, not mutually exclusive verdicts.
+- Diagnostic magnitudes fall into small / moderate–borderline / large (oracle
+  gap) and low / moderate–borderline / high (feature–label instability) bands as
+  defined in `docs/03_data_dictionary_and_assumptions.md`. A moderate / borderline
+  value is intermediate diagnostic evidence: it is reported transparently as such,
+  is neither treated as a strong drift claim nor discarded as null evidence, and
+  does not by itself trigger or suppress any of Rules A–G. Such a result is
+  carried into the overall multi-signal interpretation rather than forced into the
+  small/large or low/high categories.
