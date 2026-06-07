@@ -1,0 +1,4 @@
+context,setting_description,source_context,target_context,train_default_rate,test_default_rate,train_n,test_n
+in_domain,In-domain reference within the source setting,Source setting held-out fold,Source setting held-out fold,0.155958,0.155966,107843.0,26961.0
+temporal,"Temporal transfer: train on 2013 loan vintage, evaluate on 2016 loan vintage",2013 loan vintage,2016 loan vintage,0.15596,0.232818,134804.0,293057.0
+cross_segment,"Cross-segment transfer: train on 2013 debt consolidation segment, evaluate on 2013 credit card segment",2013 debt consolidation loan-purpose segment,2013 credit card loan-purpose segment,0.163641,0.131966,80634.0,32804.0
