@@ -1,0 +1,31 @@
+======================================================================
+Stage 5 — Calibration diagnostic
+======================================================================
+
+Context A — in-domain:
+    logreg seed=0: raw ECE10=0.0105 intercept=-0.276 slope=0.826 -> recal ECE10=0.0105 (delta=+0.001)
+    hgb seed=0: raw ECE10=0.0062 intercept=0.102 slope=1.063 -> recal ECE10=0.0061 (delta=+0.002)
+    rf seed=0: raw ECE10=0.0300 intercept=-0.615 slope=0.582 -> recal ECE10=0.0290 (delta=+0.094)
+    rf seed=1: raw ECE10=0.0296 intercept=-0.621 slope=0.580 -> recal ECE10=0.0271 (delta=+0.091)
+    rf seed=2: raw ECE10=0.0294 intercept=-0.611 slope=0.585 -> recal ECE10=0.0269 (delta=+0.093)
+
+Context B — temporal:
+    logreg seed=0: raw ECE10=0.0711 intercept=0.298 slope=0.886 -> recal ECE10=0.0061 (delta=+0.480)
+    hgb seed=0: raw ECE10=0.0756 intercept=0.635 slope=1.078 -> recal ECE10=0.0051 (delta=+0.509)
+    rf seed=0: raw ECE10=0.0814 intercept=-0.040 slope=0.639 -> recal ECE10=0.0292 (delta=+0.567)
+    rf seed=1: raw ECE10=0.0809 intercept=-0.046 slope=0.637 -> recal ECE10=0.0293 (delta=+0.564)
+    rf seed=2: raw ECE10=0.0814 intercept=-0.046 slope=0.636 -> recal ECE10=0.0293 (delta=+0.567)
+
+Context C — cross-segment:
+  source segment: debt_consolidation (n=80634)
+  target segment: credit_card (n=32804)
+    logreg seed=0: raw ECE10=0.0270 intercept=-0.374 slope=0.905 -> recal ECE10=0.0057 (delta=-0.226)
+    hgb seed=0: raw ECE10=0.0268 intercept=-0.053 slope=1.109 -> recal ECE10=0.0050 (delta=-0.223)
+    rf seed=0: raw ECE10=0.0293 intercept=-0.834 slope=0.580 -> recal ECE10=0.0247 (delta=-0.145)
+    rf seed=1: raw ECE10=0.0303 intercept=-0.836 slope=0.579 -> recal ECE10=0.0256 (delta=-0.147)
+    rf seed=2: raw ECE10=0.0300 intercept=-0.842 slope=0.577 -> recal ECE10=0.0254 (delta=-0.149)
+
+wrote: results/tables/calibration_summary.csv / calibration_deciles.csv / .json
+wrote: results/manifests/05_calibration_manifest.json
+
+Stage 5 complete.
