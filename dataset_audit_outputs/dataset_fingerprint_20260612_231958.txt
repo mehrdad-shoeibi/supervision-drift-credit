@@ -1,0 +1,151 @@
+==============================================================================
+READ-ONLY DATASET PROVENANCE AUDIT
+Reference: Ariza-Garzon et al. 2024, Zenodo 10.5281/zenodo.11295916
+(concept DOI 10.5281/zenodo.11295915, same record family; not resolved online)
+==============================================================================
+
+[FILE FINGERPRINT]
+  absolute_path : /home/mehrdad/Desktop/supervision-drift-credit/data/raw/LC_loans_granting_model_dataset.csv
+  file_name     : LC_loans_granting_model_dataset.csv
+  size_bytes    : 167,468,415
+  size_mb       : 159.71
+  sha256        : 207d65b2712f775a91404496ab27c786ac0da6b0f977f849e6d5d8149e925acc
+
+[SHAPE]
+  n_rows : 1,347,681
+  n_cols : 15
+
+[COLUMNS] (ordered)
+  id, issue_d, revenue, dti_n, loan_amnt, fico_n, experience_c, emp_length, purpose, home_ownership_n, addr_state, zip_code, Default, title, desc
+
+[CANDIDATE KEY COLUMNS]
+  present: ['id']
+
+[DETECTED COLUMNS]
+  year_col    : None
+  purpose_col : purpose
+  label_col   : Default
+  date_col    : issue_d
+
+[LABEL / DEFAULT-RATE SUMMARY]
+  label_col          : Default
+  n_unique_values    : 2
+  unique_values      : ['0', '1']  (category labels only)
+  rate_mode          : numeric_binary
+  overall_default_rate: 0.1998
+
+[YEAR / VINTAGE DISTRIBUTION]
+  source: parsed from date column 'issue_d'
+  date_parse_rate: 1.0000
+  2007: 599
+  2008: 2,393
+  2009: 5,281
+  2010: 12,537
+  2011: 21,721
+  2012: 53,367
+  2013: 134,804
+  2014: 223,102
+  2015: 375,543
+  2016: 293,057
+  2017: 169,117
+  2018: 56,160
+
+[PURPOSE DISTRIBUTION] (normalized)
+  debt_consolidation: 781,206
+  credit_card: 295,551
+  home_improvement: 87,684
+  other: 78,263
+  major_purchase: 29,543
+  medical: 15,606
+  small_business: 15,575
+  car: 14,647
+  moving: 9,520
+  vacation: 9,083
+  house: 7,294
+  wedding: 2,350
+  renewable_energy: 936
+  educational: 423
+
+==============================================================================
+ARIZA-GARZON GRANTING-VERSION CONSISTENCY CHECK
+==============================================================================
+  label 'Default' unique-value count: 2
+
+  post-origination / leakage columns present: none
+  granting-version signs present (binary label & no leakage cols): True
+
+==============================================================================
+MANUSCRIPT TABLE 1 REPRODUCTION CHECK
+==============================================================================
+Assumptions:
+  * in_domain cannot be reproduced exactly (held-out random fold unknown);
+    only the identity 107843 + 26961 = 134804 = total 2013 vintage is checked,
+    and the 2013 overall default rate is compared to 0.1560 as a proxy.
+  * temporal train n = total 2013 rows; temporal test n = total 2016 rows.
+  * cross_segment counts are within 2013, filtered by normalized purpose.
+  * n match: EXACT required; default-rate tolerance = 0.001
+
+  [in_domain] 107843 + 26961 = 134804 identity vs total 2013 count
+    expected_total_2013   : 134804
+    observed_total_2013   : 134804
+    identity_holds        : True
+
+  [in_domain_total_2013_and_rate] (2013 total + proxy overall rate)
+    expected_n            : 134804
+    observed_n            : 134804
+    abs_diff_n            : 0
+    expected_default_rate : 0.1560
+    observed_default_rate : 0.1560
+    abs_diff_rate         : 0.0000
+    n_status / rate_status: PASS / PASS
+    STATUS                : PASS
+
+  [temporal_train_2013] 
+    expected_n            : 134804
+    observed_n            : 134804
+    abs_diff_n            : 0
+    expected_default_rate : 0.1560
+    observed_default_rate : 0.1560
+    abs_diff_rate         : 0.0000
+    n_status / rate_status: PASS / PASS
+    STATUS                : PASS
+
+  [temporal_test_2016] 
+    expected_n            : 293057
+    observed_n            : 293057
+    abs_diff_n            : 0
+    expected_default_rate : 0.2328
+    observed_default_rate : 0.2328
+    abs_diff_rate         : 0.0000
+    n_status / rate_status: PASS / PASS
+    STATUS                : PASS
+
+  [cross_segment_train_2013_debt_consolidation] 
+    expected_n            : 80634
+    observed_n            : 80634
+    abs_diff_n            : 0
+    expected_default_rate : 0.1636
+    observed_default_rate : 0.1636
+    abs_diff_rate         : 0.0000
+    n_status / rate_status: PASS / PASS
+    STATUS                : PASS
+
+  [cross_segment_test_2013_credit_card] 
+    expected_n            : 32804
+    observed_n            : 32804
+    abs_diff_n            : 0
+    expected_default_rate : 0.1320
+    observed_default_rate : 0.1320
+    abs_diff_rate         : 0.0000
+    n_status / rate_status: PASS / PASS
+    STATUS                : PASS
+
+==============================================================================
+FINAL VERDICT
+==============================================================================
+  1) LIKELY SAME DATASET AND FILTERING
+
+  Evidence:
+    - all reproducible row counts match the manuscript exactly.
+    - all Table 1 default-rate checks match within tolerance (none skipped).
+    - binary label and no post-origination/leakage columns (granting-version signs).

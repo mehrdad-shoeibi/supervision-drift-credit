@@ -1,0 +1,152 @@
+{
+  "path": "/home/mehrdad/Desktop/supervision-drift-credit/data/raw/LC_loans_granting_model_dataset.csv",
+  "file_name": "LC_loans_granting_model_dataset.csv",
+  "size_bytes": 167468415,
+  "size_mb": 159.7103,
+  "sha256": "207d65b2712f775a91404496ab27c786ac0da6b0f977f849e6d5d8149e925acc",
+  "n_rows": 1347681,
+  "n_cols": 15,
+  "columns": [
+    "id",
+    "issue_d",
+    "revenue",
+    "dti_n",
+    "loan_amnt",
+    "fico_n",
+    "experience_c",
+    "emp_length",
+    "purpose",
+    "home_ownership_n",
+    "addr_state",
+    "zip_code",
+    "Default",
+    "title",
+    "desc"
+  ],
+  "candidate_key_columns_present": [
+    "id"
+  ],
+  "detected_columns": {
+    "year_col": null,
+    "purpose_col": "purpose",
+    "label_col": "Default",
+    "date_col": "issue_d"
+  },
+  "label": {
+    "label_col": "Default",
+    "n_unique_values": 2,
+    "unique_values": [
+      "0",
+      "1"
+    ],
+    "rate_mode": "numeric_binary",
+    "positive_label_values": null
+  },
+  "year_distribution": {
+    "2007": 599,
+    "2008": 2393,
+    "2009": 5281,
+    "2010": 12537,
+    "2011": 21721,
+    "2012": 53367,
+    "2013": 134804,
+    "2014": 223102,
+    "2015": 375543,
+    "2016": 293057,
+    "2017": 169117,
+    "2018": 56160
+  },
+  "year_source": "parsed from date column 'issue_d'",
+  "purpose_distribution": {
+    "debt_consolidation": 781206,
+    "credit_card": 295551,
+    "home_improvement": 87684,
+    "other": 78263,
+    "major_purchase": 29543,
+    "medical": 15606,
+    "small_business": 15575,
+    "car": 14647,
+    "moving": 9520,
+    "vacation": 9083,
+    "house": 7294,
+    "wedding": 2350,
+    "renewable_energy": 936,
+    "educational": 423
+  },
+  "granting_version_check": {
+    "warnings": [],
+    "label_n_unique": 2,
+    "label_is_loan_status_multiclass": false,
+    "leakage_columns_present": [],
+    "binary_label": true,
+    "granting_signs_present": true
+  },
+  "table1_reproduction": [
+    {
+      "name": "in_domain_total_2013_and_rate",
+      "expected_n": 134804,
+      "observed_n": 134804,
+      "abs_diff_n": 0,
+      "expected_default_rate": 0.156,
+      "observed_default_rate": 0.15596,
+      "abs_diff_rate": 4e-05,
+      "n_status": "PASS",
+      "rate_status": "PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "temporal_train_2013",
+      "expected_n": 134804,
+      "observed_n": 134804,
+      "abs_diff_n": 0,
+      "expected_default_rate": 0.156,
+      "observed_default_rate": 0.15596,
+      "abs_diff_rate": 4e-05,
+      "n_status": "PASS",
+      "rate_status": "PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "temporal_test_2016",
+      "expected_n": 293057,
+      "observed_n": 293057,
+      "abs_diff_n": 0,
+      "expected_default_rate": 0.2328,
+      "observed_default_rate": 0.232818,
+      "abs_diff_rate": 1.8e-05,
+      "n_status": "PASS",
+      "rate_status": "PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "cross_segment_train_2013_debt_consolidation",
+      "expected_n": 80634,
+      "observed_n": 80634,
+      "abs_diff_n": 0,
+      "expected_default_rate": 0.1636,
+      "observed_default_rate": 0.163641,
+      "abs_diff_rate": 4.1e-05,
+      "n_status": "PASS",
+      "rate_status": "PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "cross_segment_test_2013_credit_card",
+      "expected_n": 32804,
+      "observed_n": 32804,
+      "abs_diff_n": 0,
+      "expected_default_rate": 0.132,
+      "observed_default_rate": 0.131966,
+      "abs_diff_rate": 3.4e-05,
+      "n_status": "PASS",
+      "rate_status": "PASS",
+      "status": "PASS"
+    }
+  ],
+  "verdict": "1) LIKELY SAME DATASET AND FILTERING",
+  "evidence": [
+    "all reproducible row counts match the manuscript exactly.",
+    "all Table 1 default-rate checks match within tolerance (none skipped).",
+    "binary label and no post-origination/leakage columns (granting-version signs)."
+  ]
+}
