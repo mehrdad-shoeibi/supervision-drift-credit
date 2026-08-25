@@ -20,3 +20,6 @@ data
 
 # Claude workspace artifacts
 .claude/
+
+# Export/evidence bundles — preserved in archival backup, not committed
+*.zip
