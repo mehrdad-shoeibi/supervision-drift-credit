@@ -1,0 +1,95 @@
+{
+  "file": "/home/mehrdad/Desktop/supervision-drift-credit/data/raw/LC_loans_granting_model_dataset.csv",
+  "size_bytes": 167468415,
+  "sha256": "207d65b2712f775a91404496ab27c786ac0da6b0f977f849e6d5d8149e925acc",
+  "n_rows": 1347681,
+  "n_cols": 15,
+  "columns": [
+    "id",
+    "issue_d",
+    "revenue",
+    "dti_n",
+    "loan_amnt",
+    "fico_n",
+    "experience_c",
+    "emp_length",
+    "purpose",
+    "home_ownership_n",
+    "addr_state",
+    "zip_code",
+    "Default",
+    "title",
+    "desc"
+  ],
+  "dtypes": {
+    "id": "int64",
+    "issue_d": "str",
+    "revenue": "float64",
+    "dti_n": "float64",
+    "loan_amnt": "int64",
+    "fico_n": "float64",
+    "experience_c": "int64",
+    "emp_length": "str",
+    "purpose": "str",
+    "home_ownership_n": "str",
+    "addr_state": "str",
+    "zip_code": "str",
+    "Default": "int64",
+    "title": "str",
+    "desc": "str"
+  },
+  "target": {
+    "present": true,
+    "raw_value_counts": {
+      "0": 1078432,
+      "1": 269249
+    },
+    "coerced_value_counts": {
+      "0.0": 1078432,
+      "1.0": 269249
+    },
+    "missing_or_uncoercible": 0
+  },
+  "issue_d": {
+    "present": true,
+    "parse_rate": 1.0,
+    "year_counts": {
+      "2007": 599,
+      "2008": 2393,
+      "2009": 5281,
+      "2010": 12537,
+      "2011": 21721,
+      "2012": 53367,
+      "2013": 134804,
+      "2014": 223102,
+      "2015": 375543,
+      "2016": 293057,
+      "2017": 169117,
+      "2018": 56160
+    }
+  },
+  "purpose": {
+    "present": true,
+    "value_counts": {
+      "debt_consolidation": 781206,
+      "credit_card": 295551,
+      "home_improvement": 87684,
+      "other": 78263,
+      "major_purchase": 29543,
+      "medical": 15606,
+      "small_business": 15575,
+      "car": 14647,
+      "moving": 9520,
+      "vacation": 9083,
+      "house": 7294,
+      "wedding": 2350,
+      "renewable_energy": 936,
+      "educational": 423
+    }
+  },
+  "drop_cols_present": [
+    "id",
+    "title",
+    "desc"
+  ]
+}

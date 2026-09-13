@@ -1,0 +1,55 @@
+{
+  "stage": "02_build_processed_contexts",
+  "timestamp_utc": "2026-06-06T23:20:00.110116+00:00",
+  "command": "src/02_build_processed_contexts.py",
+  "git_commit": "54d6ed705ae6fb129df8e5157a66f8c1b96b413f",
+  "package_versions": {
+    "python": "3.13.12",
+    "numpy": "2.4.4",
+    "pandas": "3.0.2",
+    "sklearn": "1.9.0",
+    "scipy": "1.17.1",
+    "pyarrow": "24.0.0"
+  },
+  "input_file_hashes": {
+    "/home/mehrdad/Desktop/supervision-drift-credit/data/raw/LC_loans_granting_model_dataset.csv": {
+      "sha256": "207d65b2712f775a91404496ab27c786ac0da6b0f977f849e6d5d8149e925acc",
+      "bytes": 167468415
+    }
+  },
+  "extra": {
+    "raw_rows": 1347681,
+    "raw_cols": 15,
+    "rows_after_target_filter": 1347681,
+    "date_parse_rate": 1.0,
+    "rows_after_date_filter": 1347681,
+    "dropped_columns": [
+      "id",
+      "title",
+      "desc"
+    ],
+    "vintage_2013_rows": 134804,
+    "vintage_2016_rows": 293057,
+    "vintage_2013_default_rate": 0.15595976380522833,
+    "vintage_2016_default_rate": 0.23281818895300233,
+    "indomain_2013_train_rows": 107843,
+    "indomain_2013_test_rows": 26961,
+    "segment_2013_counts": {
+      "debt_consolidation": 80634,
+      "credit_card": 32804,
+      "home_improvement": 7403,
+      "other": 5842,
+      "major_purchase": 2298,
+      "small_business": 1359,
+      "car": 1050,
+      "medical": 889,
+      "house": 675,
+      "moving": 639,
+      "wedding": 595,
+      "vacation": 565,
+      "renewable_energy": 51
+    },
+    "source_segment": "debt_consolidation",
+    "target_segment": "credit_card"
+  }
+}

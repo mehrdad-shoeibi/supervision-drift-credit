@@ -1,0 +1,21 @@
+======================================================================
+Stage 2 — Processed context construction
+======================================================================
+loaded raw: 1,347,681 rows x 15 cols
+dropped 0 rows with missing/uncoercible target
+issue_d parse rate: 1.0000
+dropped 0 rows with unparseable issue_d
+dropped leakage-prone columns: ['id', 'title', 'desc']
+vintage 2013: 134,804 rows
+vintage 2016: 293,057 rows
+in-domain 2013 train: 107,843  test: 26,961
+source segment (largest 2013 purpose): debt_consolidation (n=80634)
+target segment (second-largest 2013 purpose): credit_card (n=32804)
+wrote: /home/mehrdad/Desktop/supervision-drift-credit/data/processed/vintage_2013.parquet  (134,804 rows)
+wrote: /home/mehrdad/Desktop/supervision-drift-credit/data/processed/vintage_2016.parquet  (293,057 rows)
+wrote: /home/mehrdad/Desktop/supervision-drift-credit/data/processed/indomain_2013_train.parquet  (107,843 rows)
+wrote: /home/mehrdad/Desktop/supervision-drift-credit/data/processed/indomain_2013_test.parquet  (26,961 rows)
+wrote: data/processed/load_report.json
+wrote: results/manifests/02_build_processed_contexts_manifest.json
+
+Stage 2 complete.
