@@ -1,0 +1,17 @@
+{
+  "title": "Supervision-drift audit protocol for proxy-labeled credit-risk prediction (code and locked protocol)",
+  "upload_type": "software",
+  "license": "MIT",
+  "creators": [
+    {
+      "name": "Shoeibi, Mehrdad",
+      "affiliation": "University of Central Florida",
+      "orcid": "0009-0006-5470-0397"
+    }
+  ],
+  "description": "Code, locked design and analysis protocol, decision rules, run manifests, and result tables for the HICSS-60 paper \"A Decision-Support Audit Protocol for Supervision Drift in Proxy-Labeled Credit-Risk Prediction\" (Shoeibi, Shabanpour, Karwowski, and Yousefi). The pipeline implements the five diagnostic layers (transfer performance, oracle gap, calibration, feature-label stability, synthetic positive control) and the rule-based multi-signal synthesis on the public LendingClub loan-granting dataset (Ariza-Garzon et al., 2024, doi:10.5281/zenodo.11295916). The raw data are not included.",
+  "keywords": ["supervision drift", "credit-risk prediction", "proxy labels", "model calibration", "design science", "distribution shift"],
+  "related_identifiers": [
+    {"identifier": "10.5281/zenodo.11295916", "relation": "requires", "resource_type": "dataset"}
+  ]
+}

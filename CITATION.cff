@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite both the software archive and the HICSS-60 paper below."
+type: software
+title: "Supervision-drift audit protocol for proxy-labeled credit-risk prediction (code and locked protocol)"
+version: "1.0.0"
+date-released: "2026-09-13"
+license: MIT
+repository-code: "https://github.com/mehrdad-shoeibi/supervision-drift-credit"
+authors:
+  - family-names: Shoeibi
+    given-names: Mehrdad
+    orcid: "https://orcid.org/0009-0006-5470-0397"
+    affiliation: "Department of Industrial Engineering and Management Systems, University of Central Florida"
+keywords:
+  - supervision drift
+  - credit-risk prediction
+  - proxy labels
+  - model calibration
+  - design science
+  - distribution shift
+preferred-citation:
+  type: conference-paper
+  title: "A Decision-Support Audit Protocol for Supervision Drift in Proxy-Labeled Credit-Risk Prediction"
+  authors:
+    - family-names: Shoeibi
+      given-names: Mehrdad
+      orcid: "https://orcid.org/0009-0006-5470-0397"
+    - family-names: Shabanpour
+      given-names: Muhammad
+      orcid: "https://orcid.org/0009-0005-4737-5808"
+    - family-names: Karwowski
+      given-names: Waldemar
+      orcid: "https://orcid.org/0000-0002-9134-3441"
+    - family-names: Yousefi
+      given-names: Niloofar
+      orcid: "https://orcid.org/0009-0005-6018-0634"
+  collection-title: "Proceedings of the 60th Hawaii International Conference on System Sciences (HICSS-60)"
+  year: 2027
