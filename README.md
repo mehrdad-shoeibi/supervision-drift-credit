@@ -42,8 +42,9 @@ experiment is run** (see `docs/`). After official execution:
 
 The pipeline expects the LendingClub loan-granting model dataset at:
 
+```
 data/raw/LC_loans_granting_model_dataset.csv
-
+```
 
 This file is **not** tracked in git. Copy it into `data/raw/` manually. Then run
 `python src/00_stage_data.py` to confirm it is in place.
@@ -57,32 +58,35 @@ the segment column `purpose`. See `docs/03_data_dictionary_and_assumptions.md`.
 > `docs/` are committed and reviewed.** The protocol is pre-registered; running
 > experiments before committing the design violates the integrity rules above.
 
-python src/00_stage_data.py # confirm raw file is present
-python src/01_verify_data.py # verify + fingerprint raw data
-python src/02_build_processed_contexts.py # build vintage/in-domain contexts
-python src/03_primary_experiment.py # PRIMARY: AUROC/AP/Brier
-python src/04_oracle_gap_diagnostic.py # diagnostic: oracle gap
-python src/05_calibration_diagnostic.py # diagnostic: calibration
-python src/06_feature_label_stability.py # diagnostic: feature-label stability
+```
+python src/00_stage_data.py                      # confirm raw file is present
+python src/01_verify_data.py                     # verify + fingerprint raw data
+python src/02_build_processed_contexts.py        # build vintage/in-domain contexts
+python src/03_primary_experiment.py              # PRIMARY: AUROC/AP/Brier
+python src/04_oracle_gap_diagnostic.py           # diagnostic: oracle gap
+python src/05_calibration_diagnostic.py          # diagnostic: calibration
+python src/06_feature_label_stability.py         # diagnostic: feature-label stability
 python src/07_positive_control_synthetic_drift.py# diagnostic: synthetic positive control
-
+```
 
 ## Environment
 
+```
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-
+```
 
 ## Repository layout
 
-docs/ locked design & analysis protocol (committed before experiments)
-src/ reproducible pipeline (numbered stages) + utils
-data/ raw/ and processed/ (git-ignored, never committed)
-results/ official outputs: tables/ logs/ manifests/ (tracked for the reported runs)
-paper/ decision notes, table sources, and figure sources
-dataset_audit_outputs/ SHA-256 fingerprint and audit of the raw file
-
+```
+docs/      locked design & analysis protocol (committed before experiments)
+src/       reproducible pipeline (numbered stages) + utils
+data/      raw/ and processed/ (git-ignored, never committed)
+results/   official outputs: tables/ logs/ manifests/ (tracked for the reported runs)
+paper/     decision notes, table sources, and figure sources
+dataset_audit_outputs/  SHA-256 fingerprint and audit of the raw file
+```
 
 Every script writes machine-readable outputs plus a manifest recording the
 timestamp, command, git commit, package versions, and input file hashes for
